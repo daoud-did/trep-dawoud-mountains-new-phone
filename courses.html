@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover">
+    <meta name="description" content="الدورات - TREP DAWOUD">
+    <meta name="theme-color" content="#D4845C">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>الدورات - TREP DAWOUD</title>
+    <link rel="preload" href="css/style.css" as="style">
+    <link rel="preload" href="css/navbar.css" as="style">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/rtl.css">
+    <link rel="stylesheet" href="css/breadcrumb.css">
+    <link rel="stylesheet" href="css/performance.css">
+    <link rel="stylesheet" href="css/mobile-optimization.css">
+    <link rel="stylesheet" href="css/critical-performance.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
+</head>
+
+<body>
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <i class="fas fa-mountain"></i>
+                <span>TREP DAWOUD</span>
+            </div>
+            <nav class="nav-menu">
+                <a href="index.html" class="nav-link">الرئيسية</a>
+                <a href="mountains.html" class="nav-link">الجبال</a>
+                <a href="dashboard.html" class="nav-link">لوحة التحكم</a>
+                <a href="blog.html" class="nav-link">المدونة</a>
+                <a href="courses.html" class="nav-link active">الدورات</a>
+                <a href="services.html" class="nav-link">الخدمات</a>
+                <a href="question.html" class="nav-link">أسئلة</a>
+                <a href="login.html" class="nav-link">تسجيل الدخول</a>
+                <a href="signup.html" class="nav-link">إنشاء حساب</a>
+            </nav>
+            <div class="theme-toggle">
+                <button class="theme-btn" id="themeBtn">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title"><span class="glow-text">الدورات</span></h1>
+            <p class="hero-subtitle">تدريب شامل وأساسي للمتسلقين</p>
+        </div>
+    </section>
+
+    <section style="padding: 80px 20px; text-align: center;">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <h2 style="font-size: 2.5rem; margin-bottom: 2rem;">الدورات المتاحة</h2>
+            <div id="courses-container" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 2rem; margin-bottom: 3rem;"></div>
+        </div>
+    </section>
+            <p style="font-size: 1.1rem; opacity: 0.8; margin-bottom: 3rem;">نحن نعمل على إضافة دورات تدريبية شاملة. تابعنا قريباً!</p>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>TREP DAWOUD</h3>
+                <p>نظام عرض متقدم لأجمل الجبال حول العالم</p>
+            </div>
+            <div class="footer-section">
+                <h3>الروابط السريعة</h3>
+                <ul>
+                    <li><a href="index.html">الرئيسية</a></li>
+                    <li><a href="mountains.html">الجبال</a></li>
+                    <li><a href="services.html">الخدمات</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>تابعنا</h3>
+                <div class="social-links">
+                    <a href="#" title="Facebook"><i class="fab fa-facebook"></i></a>
+                    <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" title="YouTube"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 TREP DAWOUD. جميع الحقوق محفوظة.</p>
+        </div>
+    </footer>
+
+    <script src="js/breadcrumb.js"></script>
+    <script src="js/snow-effect.js"></script>
+    <script src="js/courses-data.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/navigation.js"></script>
+    <script>
+        // Display courses from COURSES_DATA
+        function displayCourses() {
+            const container = document.getElementById('courses-container');
+            if (!container || !COURSES_DATA) return;
+            
+            container.innerHTML = COURSES_DATA.map(course => `
+                <div style="background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); transition: all 0.3s ease; cursor: pointer;" 
+                     onmouseover="this.style.transform='translateY(-10px)'; this.style.boxShadow='0 10px 30px rgba(0, 0, 0, 0.2)'"
+                     onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 5px 15px rgba(0, 0, 0, 0.1)'">
+                    <img src="${course.image}" alt="${course.name}" style="width: 100%; height: 200px; object-fit: cover;">
+                    <div style="padding: 1.5rem;">
+                        <h3 style="color: #2E8B57; margin-bottom: 0.5rem; font-size: 1.2rem;">${course.name}</h3>
+                        <p style="color: #666; margin-bottom: 1rem; font-size: 0.9rem;">${course.shortDesc}</p>
+                        <div style="margin-bottom: 1rem; font-size: 0.85rem;">
+                            <span style="display: inline-block; background: #f0f0f0; padding: 0.3rem 0.6rem; border-radius: 4px; margin-right: 0.5rem; color: #666;">
+                                <i class="${course.icon}"></i> ${course.level}
+                            </span>
+                            <span style="display: inline-block; background: #f0f0f0; padding: 0.3rem 0.6rem; border-radius: 4px; color: #666;">
+                                ⏱️ ${course.duration}
+                            </span>
+                        </div>
+                        <p style="font-size: 1.5rem; color: #2E8B57; font-weight: bold; margin-top: 1rem;">${course.price} ريال</p>
+                    </div>
+                </div>
+            `).join('');
+        }
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            // Display courses
+            displayCourses();
+            
+            // Initialize snow effect
+            const snowContainer = document.createElement('div');
+            snowContainer.style.cssText = 'position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1;';
+            document.body.appendChild(snowContainer);
+            new SnowEffect(snowContainer, 80);
+        });
+    </script>
+</body>
+</html>

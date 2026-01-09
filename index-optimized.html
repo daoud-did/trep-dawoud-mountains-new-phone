@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=5.0, user-scalable=yes">
+    <meta name="description" content="استكشف أجمل الجبال حول العالم مع TREP DAWOUD - موقع محسّن للهواتف الضعيفة">
+    <meta name="theme-color" content="#D4845C">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="color-scheme" content="light dark">
+    
+    <title>TREP DAWOUD - استكشف الجبال | محسّن للهواتف</title>
+    
+    <!-- ============================================
+         CRITICAL CSS (Inline)
+         الحد الأدنى من CSS للعرض الأولي السريع
+         ============================================ -->
+    <style>
+        :root{--primary:#D4845C;--primary-dark:#B8623D;--secondary:#067e66;--accent:#E8C547;--off-white:#F8F7F2;--black:#2F2D2A;--gray:#7f8c8d;--transition-duration:0.3s}
+        *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+        html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+        body{font-family:system-ui,-apple-system,'Segoe UI','Cairo',sans-serif;font-size:16px;line-height:1.6;color:var(--black);background:var(--off-white);transition:background-color var(--transition-duration) ease;min-height:100vh;overflow-x:hidden}
+        body.dark-mode{background:#1a1a18;color:#f8f7f2}
+        .header{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(248,247,242,0.98);backdrop-filter:blur(4px);box-shadow:0 1px 3px rgba(0,0,0,0.08)}
+        body.dark-mode .header{background:rgba(26,26,24,0.98);border-bottom:1px solid rgba(255,255,255,0.1)}
+        .header-content{max-width:1200px;margin:0 auto;padding:0.75rem 16px;display:flex;justify-content:space-between;align-items:center}
+        .logo{display:flex;align-items:center;gap:0.5rem;font-size:1.5rem;font-weight:700;color:var(--primary-dark);text-decoration:none}
+        .nav-menu{display:none;gap:1rem;list-style:none}
+        @media(min-width:769px){.nav-menu{display:flex}}
+        .nav-link{color:var(--black);font-weight:500;transition:color var(--transition-duration) ease;padding:0.5rem 0;text-decoration:none}
+        body.dark-mode .nav-link{color:#ccc}
+        .nav-link:active{color:var(--primary)}
+        .theme-btn{background:0;border:2px solid var(--primary);color:var(--primary);width:36px;height:36px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all var(--transition-duration) ease}
+        .theme-btn:active{transform:scale(0.95);background:var(--primary);color:#fff}
+        .menu-toggle{display:flex;flex-direction:column;gap:4px;cursor:pointer;background:0;border:none;width:32px;height:32px;align-items:center;justify-content:center}
+        @media(min-width:769px){.menu-toggle{display:none}}
+        .menu-toggle span{width:24px;height:2px;background:var(--black);border-radius:1px;transition:all var(--transition-duration) ease}
+        body.dark-mode .menu-toggle span{background:#fff}
+        .hero{padding:clamp(50px,15vh,100px) 16px clamp(30px,10vh,50px);margin-top:60px;text-align:center;background:linear-gradient(135deg,rgba(212,132,92,0.08),rgba(6,126,102,0.04))}
+        .hero-title{font-size:clamp(1.8rem,6vw,3rem);font-weight:700;margin:1rem 0;color:var(--black)}
+        body.dark-mode .hero-title{color:var(--off-white)}
+        .hero-subtitle{font-size:clamp(1rem,3vw,1.25rem);color:var(--gray);margin-bottom:1.5rem}
+        body.dark-mode .hero-subtitle{color:#bbb}
+        .hero-buttons{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+        .btn{display:inline-flex;align-items:center;justify-content:center;padding:clamp(10px,2vw,14px) clamp(20px,4vw,30px);border-radius:6px;font-weight:600;font-size:clamp(0.9rem,2vw,1rem);text-decoration:none;cursor:pointer;border:none;transition:all var(--transition-duration) ease;user-select:none;-webkit-tap-highlight-color:transparent}
+        .btn-primary{background:linear-gradient(135deg,var(--primary),var(--primary-dark));color:#fff;box-shadow:0 2px 8px rgba(212,132,92,0.2)}
+        .btn-primary:active{transform:translateY(1px);box-shadow:0 1px 4px rgba(212,132,92,0.15)}
+        .btn-secondary{background:0;color:var(--primary);border:2px solid var(--primary)}
+        .btn-secondary:active{background:rgba(212,132,92,0.1)}
+        .container{max-width:1200px;margin:0 auto;padding:0 16px}
+        @media(max-width:480px){.hero-buttons{flex-direction:column}.btn{width:100%}}
+        @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:0.01ms!important;animation-iteration-count:1!important;transition-duration:0.01ms!important;scroll-behavior:auto!important}}
+    </style>
+    
+    <!-- ============================================
+         NON-CRITICAL CSS (Lazy Load)
+         ============================================ -->
+    <link rel="stylesheet" href="css/main.min.css" media="print" onload="this.media='all'; this.onload=null;">
+    <noscript><link rel="stylesheet" href="css/main.min.css"></noscript>
+    
+    <!-- ============================================
+         FONTS (Async Load)
+         ============================================ -->
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" onload="this.onload=null; this.rel='stylesheet';">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
+    
+    <!-- ============================================
+         DNS PREFETCH و PRECONNECT
+         ============================================ -->
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- ============================================
+         PRELOAD CRITICAL RESOURCES
+         ============================================ -->
+    <link rel="preload" href="js/app.critical.js" as="script">
+    
+    <!-- ============================================
+         MANIFEST و SERVICE WORKER
+         ============================================ -->
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+</head>
+
+<body>
+    <!-- ============================================
+         HEADER و NAVIGATION
+         ============================================ -->
+    <header class="header">
+        <div class="header-content">
+            <a href="index.html" class="logo">
+                <i class="fas fa-mountain"></i>
+                <span>TREP DAWOUD</span>
+            </a>
+            <nav class="nav-menu">
+                <a href="index.html" class="nav-link">الرئيسية</a>
+                <a href="mountains.html" class="nav-link">الجبال</a>
+                <a href="blog.html" class="nav-link">المدونة</a>
+                <a href="services.html" class="nav-link">الخدمات</a>
+                <a href="login.html" class="nav-link">دخول</a>
+            </nav>
+            <div class="theme-toggle">
+                <button class="theme-btn" id="themeBtn" aria-label="تبديل الوضع الليلي">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+            <button class="menu-toggle" aria-label="فتح القائمة">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- ============================================
+         HERO SECTION
+         ============================================ -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h1 class="hero-title">TREP DAWOUD</h1>
+            <p class="hero-subtitle">استكشف أجمل الجبال بسرعة وسهولة</p>
+            <div class="hero-buttons">
+                <a href="mountains.html" class="btn btn-primary">
+                    <i class="fas fa-mountain"></i> استكشف
+                </a>
+                <a href="blog.html" class="btn btn-secondary">
+                    <i class="fas fa-book"></i> اقرأ
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         MAIN CONTENT (Placeholder)
+         ============================================ -->
+    <main>
+        <section style="padding: 2rem; max-width: 1200px; margin: 0 auto;">
+            <h2>مرحباً بك</h2>
+            <p>هذا الموقع محسّن بالكامل للهواتف الضعيفة والاتصالات البطيئة.</p>
+            <p>تم تطبيق أفضل ممارسات الأداء والسرعة.</p>
+        </section>
+    </main>
+
+    <!-- ============================================
+         FOOTER
+         ============================================ -->
+    <footer style="background: #f0f0f0; padding: 2rem; text-align: center; margin-top: 3rem;">
+        <p>&copy; 2026 TREP DAWOUD. جميع الحقوق محفوظة.</p>
+    </footer>
+
+    <!-- ============================================
+         SCRIPTS - OPTIMIZED LOADING
+         ============================================ -->
+    
+    <!-- Critical App Script (Blocks rendering) -->
+    <script src="js/app.critical.js"></script>
+    
+    <!-- Deferred Scripts (Load after page render) -->
+    <script src="js/app.min.js" defer></script>
+    <script src="js/performance.js" defer></script>
+    
+    <!-- Service Worker Registration (Non-blocking) -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('sw.js').catch(() => {
+                    // Service Worker not available - graceful degradation
+                });
+            });
+        }
+    </script>
+</body>
+
+</html>

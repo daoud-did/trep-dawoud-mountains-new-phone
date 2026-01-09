@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://daoud-did.github.io/trep-dawoud--version-3.0/sitemap.xml

@@ -1,0 +1,28 @@
+.led-card {
+    background: linear-gradient(45deg, #00ff00, #000000);
+    border: 2px solid #00ff00;
+    color: #00ff00;
+    padding: 10px 20px;
+    margin: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px #00ff00;
+    animation: pulse 2s infinite;
+}
+
+.oled-bg {
+    background: linear-gradient(45deg, #000000, #111111);
+    min-height: 100vh;
+    color: #ffffff;
+    text-align: center;
+    padding: 50px;
+}
+
+.amoled-pulse {
+    animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+    0% { box-shadow: 0 0 10px #00ff00; }
+    50% { box-shadow: 0 0 20px #00ff00; }
+    100% { box-shadow: 0 0 10px #00ff00; }
+}

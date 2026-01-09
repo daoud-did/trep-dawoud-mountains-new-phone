@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="استكشف أجمل الجبال حول العالم مع TREP DAWOUD - منصة متقدمة للمتسلقين">
+    <meta name="theme-color" content="#D4845C">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="google-site-verification" content="03RSM5bSvcSO8UqsA61G8pfrUvGtvUKDwT91cgvA1OU" />
+    <title>TREP DAWOUD - استكشف الجبال حول العالم</title>
+    
+    <!-- Critical CSS - Inline for faster rendering -->
+    <style>
+        :root{--primary:#D4845C;--primary-dark:#B8623D;--primary-light:#E8A876;--secondary:#067e66;--accent:#E8C547;--gray-dark:#6B6966;--off-white:#F8F7F2;--black:#2F2D2A}
+        *{margin:0;padding:0;box-sizing:border-box}
+        html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+        body{font-family:system-ui,-apple-system,'Segoe UI','Cairo',sans-serif;line-height:1.6;color:var(--black);background:var(--off-white);transition:background-color 0.3s ease;min-height:100vh}
+        body.dark-mode{background-color:#1a1a18;color:#f8f7f2}
+        .header{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(248,247,242,.95);backdrop-filter:blur(10px);box-shadow:0 2px 8px rgba(0,0,0,.08)}
+        .header-content{max-width:1200px;margin:0 auto;padding:1rem 20px;display:flex;justify-content:space-between;align-items:center}
+        .logo{display:flex;align-items:center;gap:.5rem;font-size:1.5rem;font-weight:700;color:var(--primary-dark);text-decoration:none}
+        .nav-menu{display:flex;gap:2rem;list-style:none;flex-wrap:wrap}
+        .nav-link{color:var(--black);font-weight:500;transition:color 0.3s ease;padding:.5rem 0;text-decoration:none}
+        .nav-link:hover{color:var(--primary)}
+        .theme-btn{background:0;border:2px solid var(--primary);color:var(--primary);width:40px;height:40px;border-radius:50%;cursor:pointer;transition:all 0.3s ease}
+        .hero{padding:80px 20px 40px;text-align:center;background:linear-gradient(135deg,rgba(212,132,92,.1),rgba(6,126,102,.05))}
+        .hero-title{font-size:clamp(2rem,5vw,3.5rem);font-weight:700;margin:1rem 0}
+        .btn{display:inline-block;padding:12px 30px;border-radius:8px;font-weight:600;text-decoration:none;cursor:pointer;border:none;transition:all 0.3s ease}
+        .btn-primary{background:linear-gradient(135deg,#e74c3c,#c0392b);color:white}
+        .menu-toggle{display:none;flex-direction:column;gap:5px;cursor:pointer}
+        @media(max-width:768px){
+            .nav-menu{display:none}
+            .menu-toggle{display:flex}
+            .hero{padding:60px 1rem 3rem}
+        }
+    </style>
+    
+    <!-- Main stylesheet - Non-critical, can load asynchronously -->
+    <link rel="stylesheet" href="css/main.min.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="css/main.min.css"></noscript>
+    
+    <!-- Font Awesome - Async load -->
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
+</head>
+
+<body>
+    <!-- Navigation Header -->
+    <header class="header">
+        <div class="header-content">
+            <a href="index.html" class="logo">
+                <i class="fas fa-mountain"></i>
+                <span>TREP DAWOUD</span>
+            </a>
+            <nav class="nav-menu">
+                <a href="index.html" class="nav-link active">الرئيسية</a>
+                <a href="mountains.html" class="nav-link">الجبال</a>
+                <a href="dashboard.html" class="nav-link">لوحة التحكم</a>
+                <a href="blog.html" class="nav-link">المدونة</a>
+                <a href="courses.html" class="nav-link">الدورات</a>
+                <a href="services.html" class="nav-link">الخدمات</a>
+                <a href="question.html" class="nav-link">أسئلة</a>
+                <a href="login.html" class="nav-link">تسجيل الدخول</a>
+                <a href="signup.html" class="nav-link">إنشاء حساب</a>
+            </nav>
+            <div class="theme-toggle">
+                <button class="theme-btn" id="themeBtn" aria-label="تبديل الوضع الليلي">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+            <button class="menu-toggle" aria-label="فتح القائمة" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1 class="hero-title">
+                <span class="glow-text">TREP DAWOUD</span>
+            </h1>
+            <p class="hero-subtitle">استكشف أجمل الجبال حول العالم مع أفضل الخدمات</p>
+            <div class="hero-buttons">
+                <a href="mountains.html" class="btn btn-primary">استكشف الجبال</a>
+                <a href="services.html" class="btn btn-secondary">الخدمات</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section" id="features">
+        <div class="features-container">
+            <h2 class="section-title">لماذا نحن؟</h2>
+            <p class="section-subtitle">نقدم أفضل الخدمات والتجارب</p>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <i class="feature-icon fas fa-globe"></i>
+                    <h3>700+ جبل حول العالم</h3>
+                    <p>استكشف أكثر من 700 جبل موزعة على جميع القارات</p>
+                </div>
+
+                <div class="feature-card">
+                    <i class="feature-icon fas fa-cube"></i>
+                    <h3>تقنية 3D متقدمة</h3>
+                    <p>عرض ثلاثي الأبعاد يمنحك تجربة استكشاف حقيقية</p>
+                </div>
+
+                <div class="feature-card">
+                    <i class="feature-icon fas fa-users"></i>
+                    <h3>مجتمع نشط</h3>
+                    <p>انضم لآلاف المتسلقين والمغامرين حول العالم</p>
+                </div>
+
+                <div class="feature-card">
+                    <i class="feature-icon fas fa-certificate"></i>
+                    <h3>دورات معتمدة</h3>
+                    <p>تدرب على يد خبراء معتمدين دوليًا</p>
+                </div>
+
+                <div class="feature-card">
+                    <i class="feature-icon fas fa-shield"></i>
+                    <h3>تأمين شامل</h3>
+                    <p>جميع رحلاتنا مغطاة بتأمين شامل</p>
+                </div>
+
+                <div class="feature-card">
+                    <i class="feature-icon fas fa-headset"></i>
+                    <h3>دعم 24/7</h3>
+                    <p>فريق الدعم متاح دائماً للمساعدة</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action Section -->
+    <section class="cta-section">
+        <div class="cta-container">
+            <h2>هل أنت مستعد للمغامرة؟</h2>
+            <p>ابدأ رحلتك اليوم واستكشف أعظم الجبال في العالم</p>
+            <a href="signup.html" class="btn btn-large">إنشاء حساب مجاني</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>TREP DAWOUD</h3>
+                <p>نظام عرض متقدم لأجمل الجبال حول العالم</p>
+            </div>
+            <div class="footer-section">
+                <h3>الروابط السريعة</h3>
+                <ul>
+                    <li><a href="index.html">الرئيسية</a></li>
+                    <li><a href="mountains.html">الجبال</a></li>
+                    <li><a href="services.html">الخدمات</a></li>
+                    <li><a href="blog.html">المدونة</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>معلومات</h3>
+                <ul>
+                    <li><a href="#">عن الموقع</a></li>
+                    <li><a href="#">سياسة الخصوصية</a></li>
+                    <li><a href="#">الشروط والأحكام</a></li>
+                    <li><a href="#">اتصل بنا</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>تابعنا</h3>
+                <div class="social-links">
+                    <a href="#" title="Facebook" aria-label="تابعنا على فيسبوك"><i class="fab fa-facebook"></i></a>
+                    <a href="#" title="Instagram" aria-label="تابعنا على انستجرام"><i class="fab fa-instagram"></i></a>
+                    <a href="#" title="Twitter" aria-label="تابعنا على تويتر"><i class="fab fa-twitter"></i></a>
+                    <a href="#" title="YouTube" aria-label="تابعنا على يوتيوب"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 TREP DAWOUD. جميع الحقوق محفوظة.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script async src="js/app.min.js"></script>
+    <script defer src="js/performance.js"></script>
+</body>
+</html>

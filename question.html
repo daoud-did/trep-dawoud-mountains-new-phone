@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="اختبر معلوماتك عن الجبال والتسلق مع أسئلة احترافية وشاملة - TREP DAWOUD">
+    <meta name="theme-color" content="#D4845C">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <title>الأسئلة والاختبارات - TREP DAWOUD</title>
+    
+    <!-- Critical CSS -->
+    <style>
+        :root{--primary:#D4845C;--primary-dark:#B8623D;--primary-light:#E8A876;--secondary:#067e66;--accent:#E8C547;--gray-dark:#6B6966;--off-white:#F8F7F2;--black:#2F2D2A}
+        *{margin:0;padding:0;box-sizing:border-box}
+        html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+        body{font-family:system-ui,-apple-system,'Segoe UI','Cairo',sans-serif;line-height:1.6;color:var(--black);background:var(--off-white);transition:background-color 0.3s ease;min-height:100vh}
+        body.dark-mode{background-color:#1a1a18;color:#f8f7f2}
+        .header{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(248,247,242,.95);backdrop-filter:blur(10px);box-shadow:0 2px 8px rgba(0,0,0,.08)}
+        .header-content{max-width:1200px;margin:0 auto;padding:1rem 20px;display:flex;justify-content:space-between;align-items:center}
+        .logo{display:flex;align-items:center;gap:.5rem;font-size:1.5rem;font-weight:700;color:var(--primary-dark);text-decoration:none}
+        .nav-menu{display:flex;gap:2rem;list-style:none;flex-wrap:wrap}
+        .nav-link{color:var(--black);font-weight:500;transition:color 0.3s ease;padding:.5rem 0;text-decoration:none}
+        .nav-link:hover{color:var(--primary)}
+        .theme-btn{background:0;border:2px solid var(--primary);color:var(--primary);width:40px;height:40px;border-radius:50%;cursor:pointer;transition:all 0.3s ease}
+        .hero{padding:80px 20px 40px;text-align:center;background:linear-gradient(135deg,rgba(212,132,92,.1),rgba(6,126,102,.05))}
+        .hero-title{font-size:clamp(2rem,5vw,3.5rem);font-weight:700;margin:1rem 0}
+        .btn{display:inline-block;padding:12px 30px;border-radius:8px;font-weight:600;text-decoration:none;cursor:pointer;border:none;transition:all 0.3s ease}
+        .btn-primary{background:linear-gradient(135deg,#e74c3c,#c0392b);color:white}
+        .menu-toggle{display:none;flex-direction:column;gap:5px;cursor:pointer}
+        @media(max-width:768px){.nav-menu{display:none}.menu-toggle{display:flex}.hero{padding:60px 1rem 3rem}}
+    </style>
+    
+    <!-- Main stylesheet -->
+    <link rel="stylesheet" href="css/main.min.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="css/main.min.css"></noscript>
+    
+    <!-- Font Awesome -->
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
+    
+    <!-- Custom Quiz Styles -->
+    <style>
+        .quiz-section {
+            padding: 60px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .quiz-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title {
+            font-size: clamp(1.75rem, 4vw, 2.5rem);
+            color: var(--black);
+            margin-bottom: 1rem;
+        }
+
+        body.dark-mode .section-title {
+            color: var(--off-white);
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: #7f8c8d;
+            margin-bottom: 2rem;
+        }
+
+        body.dark-mode .section-subtitle {
+            color: #bdc3c7;
+        }
+
+        .quiz-filters {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .filter-btn {
+            padding: 10px 20px;
+            border: 2px solid var(--primary);
+            background: transparent;
+            color: var(--primary);
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--primary);
+            color: white;
+        }
+
+        .questions-container {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .question-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            border-left: 4px solid var(--primary);
+        }
+
+        body.dark-mode .question-card {
+            background: #2a2a2a;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .question-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(212, 132, 92, 0.2);
+        }
+
+        .question-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 1.5rem;
+            gap: 1rem;
+        }
+
+        .question-text {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--black);
+            margin-bottom: 1.5rem;
+            flex: 1;
+        }
+
+        body.dark-mode .question-text {
+            color: var(--off-white);
+        }
+
+        .question-meta {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .meta-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: rgba(212, 132, 92, 0.1);
+            color: var(--primary);
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .difficulty-easy { background: rgba(46, 204, 113, 0.1); color: #2ecc71; }
+        .difficulty-medium { background: rgba(241, 196, 15, 0.1); color: #f1c40f; }
+        .difficulty-hard { background: rgba(231, 76, 60, 0.1); color: #e74c3c; }
+
+        .options-container {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .option {
+            padding: 1rem;
+            border: 2px solid #e8e6e1;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: transparent;
+            color: var(--black);
+            text-align: right;
+        }
+
+        body.dark-mode .option {
+            border-color: #3a3a3a;
+            color: var(--off-white);
+        }
+
+        .option:hover {
+            border-color: var(--primary);
+            background: rgba(212, 132, 92, 0.05);
+        }
+
+        .option.selected {
+            border-color: var(--primary);
+            background: rgba(212, 132, 92, 0.1);
+        }
+
+        .option.correct {
+            border-color: #2ecc71;
+            background: rgba(46, 204, 113, 0.1);
+        }
+
+        .option.incorrect {
+            border-color: #e74c3c;
+            background: rgba(231, 76, 60, 0.1);
+        }
+
+        .show-answer-btn {
+            margin-top: 1rem;
+            padding: 10px 20px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .show-answer-btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        .explanation {
+            margin-top: 1rem;
+            padding: 1rem;
+            background: rgba(212, 132, 92, 0.05);
+            border-radius: 8px;
+            border-right: 3px solid var(--primary);
+            display: none;
+        }
+
+        .explanation.show {
+            display: block;
+        }
+
+        .explanation-title {
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .explanation-text {
+            color: var(--gray-dark);
+        }
+
+        body.dark-mode .explanation-text {
+            color: var(--gray-light);
+        }
+
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 2rem;
+            background: white;
+            border-radius: 12px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        body.dark-mode .stat-card {
+            background: #2a2a2a;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: #7f8c8d;
+            font-size: 0.95rem;
+        }
+
+        body.dark-mode .stat-label {
+            color: #bdc3c7;
+        }
+
+        .load-more-container {
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .load-more-btn {
+            padding: 15px 50px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .load-more-btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(212, 132, 92, 0.3);
+        }
+
+        @media(max-width: 768px) {
+            .quiz-section { padding: 40px 15px; }
+            .question-card { padding: 1.5rem; }
+            .question-header { flex-direction: column; }
+            .quiz-filters { gap: 0.5rem; }
+            .filter-btn { padding: 8px 16px; font-size: 0.9rem; }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <div class="header-content">
+            <a href="index.html" class="logo">
+                <i class="fas fa-mountain"></i>
+                <span>TREP DAWOUD</span>
+            </a>
+            <nav class="nav-menu">
+                <a href="index.html" class="nav-link">الرئيسية</a>
+                <a href="mountains.html" class="nav-link">الجبال</a>
+                <a href="dashboard.html" class="nav-link">لوحة التحكم</a>
+                <a href="blog.html" class="nav-link">المدونة</a>
+                <a href="courses.html" class="nav-link">الدورات</a>
+                <a href="services.html" class="nav-link">الخدمات</a>
+                <a href="question.html" class="nav-link active">أسئلة</a>
+                <a href="login.html" class="nav-link">تسجيل الدخول</a>
+                <a href="signup.html" class="nav-link">إنشاء حساب</a>
+            </nav>
+            <div class="theme-toggle">
+                <button class="theme-btn" id="themeBtn" aria-label="تبديل الوضع الليلي">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+            <button class="menu-toggle" aria-label="فتح القائمة">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title"><span class="glow-text">الأسئلة والاختبارات</span></h1>
+            <p class="hero-subtitle">اختبر معلوماتك عن الجبال والتسلق والمغامرات</p>
+        </div>
+    </section>
+
+    <section class="quiz-section">
+        <div class="quiz-header">
+            <h2 class="section-title">مجموعة أسئلة شاملة</h2>
+            <p class="section-subtitle">40 سؤال احترافي لاختبار معرفتك حول الجبال والتسلق</p>
+        </div>
+
+        <!-- Statistics -->
+        <div class="stats-container">
+            <div class="stat-card">
+                <div class="stat-number">40</div>
+                <div class="stat-label">عدد الأسئلة</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">3</div>
+                <div class="stat-label">مستويات صعوبة</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">6</div>
+                <div class="stat-label">فئات متنوعة</div>
+            </div>
+        </div>
+
+        <!-- Filters -->
+        <div class="quiz-filters">
+            <button class="filter-btn active" data-filter="all">
+                <i class="fas fa-list"></i> الكل
+            </button>
+            <button class="filter-btn" data-filter="easy">
+                <i class="fas fa-star"></i> سهل
+            </button>
+            <button class="filter-btn" data-filter="medium">
+                <i class="fas fa-star-half-alt"></i> متوسط
+            </button>
+            <button class="filter-btn" data-filter="hard">
+                <i class="fas fa-star"></i> صعب
+            </button>
+        </div>
+
+        <!-- Questions Container -->
+        <div class="questions-container" id="questionsContainer">
+            <!-- Questions will be loaded here -->
+        </div>
+
+        <div class="load-more-container">
+            <button class="load-more-btn" id="loadMoreBtn">عرض المزيد من الأسئلة</button>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>TREP DAWOUD</h3>
+                <p>نظام عرض متقدم لأجمل الجبال حول العالم</p>
+            </div>
+            <div class="footer-section">
+                <h3>الروابط السريعة</h3>
+                <ul>
+                    <li><a href="index.html">الرئيسية</a></li>
+                    <li><a href="mountains.html">الجبال</a></li>
+                    <li><a href="services.html">الخدمات</a></li>
+                    <li><a href="blog.html">المدونة</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>معلومات</h3>
+                <ul>
+                    <li><a href="#">عن الموقع</a></li>
+                    <li><a href="#">سياسة الخصوصية</a></li>
+                    <li><a href="#">الشروط والأحكام</a></li>
+                    <li><a href="#">اتصل بنا</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>تابعنا</h3>
+                <div class="social-links">
+                    <a href="#" title="Facebook" aria-label="تابعنا على فيسبوك"><i class="fab fa-facebook"></i></a>
+                    <a href="#" title="Instagram" aria-label="تابعنا على انستجرام"><i class="fab fa-instagram"></i></a>
+                    <a href="#" title="Twitter" aria-label="تابعنا على تويتر"><i class="fab fa-twitter"></i></a>
+                    <a href="#" title="YouTube" aria-label="تابعنا على يوتيوب"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 TREP DAWOUD. جميع الحقوق محفوظة.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script async src="js/app.min.js"></script>
+    <script defer src="js/performance.js"></script>
+    <script src="js/data_question.js" defer></script>
+    <script defer>
+        document.addEventListener('DOMContentLoaded', function() {
+            let displayedQuestions = 10;
+            let currentFilter = 'all';
+
+            function renderQuestions() {
+                const container = document.getElementById('questionsContainer');
+                container.innerHTML = '';
+
+                let filtered = questionsDatabase;
+                if (currentFilter !== 'all') {
+                    filtered = questionsDatabase.filter(q => q.difficulty === currentFilter);
+                }
+
+                const toDisplay = filtered.slice(0, displayedQuestions);
+
+                toDisplay.forEach((question, index) => {
+                    const difficultyClass = `difficulty-${question.difficulty}`;
+                    const difficultyLabel = question.difficulty === 'easy' ? 'سهل' : 
+                                          question.difficulty === 'medium' ? 'متوسط' : 'صعب';
+
+                    const card = document.createElement('div');
+                    card.className = 'question-card';
+                    card.innerHTML = `
+                        <div class="question-header">
+                            <div>
+                                <div class="question-text">س${index + 1}: ${question.question}</div>
+                                <div class="question-meta">
+                                    <span class="meta-badge ${difficultyClass}">${difficultyLabel}</span>
+                                    <span class="meta-badge">${question.category}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="options-container">
+                            ${question.options.map((option, idx) => `
+                                <button class="option" data-index="${idx}" onclick="selectAnswer(this, ${question.correct})">
+                                    <strong>${String.fromCharCode(97 + idx)}</strong> - ${option}
+                                </button>
+                            `).join('')}
+                        </div>
+                        <button class="show-answer-btn" onclick="toggleExplanation(this)">عرض الإجابة والشرح</button>
+                        <div class="explanation">
+                            <div class="explanation-title">الشرح:</div>
+                            <div class="explanation-text">${question.explanation}</div>
+                        </div>
+                    `;
+                    container.appendChild(card);
+                });
+
+                const loadMoreBtn = document.getElementById('loadMoreBtn');
+                if (toDisplay.length < filtered.length) {
+                    loadMoreBtn.style.display = 'block';
+                } else {
+                    loadMoreBtn.style.display = 'none';
+                }
+            }
+
+            // Filter buttons
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    currentFilter = this.dataset.filter;
+                    displayedQuestions = 10;
+                    renderQuestions();
+                });
+            });
+
+            // Load more button
+            document.getElementById('loadMoreBtn').addEventListener('click', function() {
+                displayedQuestions += 10;
+                renderQuestions();
+            });
+
+            // Initial render
+            renderQuestions();
+        });
+
+        window.selectAnswer = function(element, correctIndex) {
+            const parent = element.parentElement;
+            parent.querySelectorAll('.option').forEach((opt, idx) => {
+                opt.classList.remove('selected', 'correct', 'incorrect');
+                if (idx === correctIndex) {
+                    opt.classList.add('correct');
+                } else if (opt === element && idx !== correctIndex) {
+                    opt.classList.add('incorrect');
+                }
+            });
+            element.classList.add('selected');
+        };
+
+        window.toggleExplanation = function(button) {
+            const explanation = button.nextElementSibling;
+            explanation.classList.toggle('show');
+            button.textContent = explanation.classList.contains('show') ? 'إخفاء الشرح' : 'عرض الإجابة والشرح';
+        };
+    </script>
+</body>
+</html>

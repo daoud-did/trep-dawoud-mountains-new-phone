@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover">
+    <meta name="description" content="الجبال - TREP DAWOUD">
+    <meta name="theme-color" content="#D4845C">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>الجبال - TREP DAWOUD</title>
+    <link rel="preload" href="css/style.css" as="style">
+    <link rel="preload" href="css/navbar.css" as="style">
+    <link rel="preload" href="css/mountains.css" as="style">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/rtl.css">
+    <link rel="stylesheet" href="css/mountains.css">
+    <link rel="stylesheet" href="css/breadcrumb.css">
+    <link rel="stylesheet" href="css/performance.css">
+    <link rel="stylesheet" href="css/mobile-optimization.css">
+    <link rel="stylesheet" href="css/critical-performance.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
+</head>
+
+<body>
+    <!-- Navigation Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <i class="fas fa-mountain"></i>
+                <span>TREP DAWOUD</span>
+            </div>
+            <nav class="nav-menu">
+                <a href="index.html" class="nav-link">الرئيسية</a>
+                <a href="mountains.html" class="nav-link active">الجبال</a>
+                <a href="dashboard.html" class="nav-link">لوحة التحكم</a>
+                <a href="blog.html" class="nav-link">المدونة</a>
+                <a href="courses.html" class="nav-link">الدورات</a>
+                <a href="services.html" class="nav-link">الخدمات</a>
+                <a href="question.html" class="nav-link">أسئلة</a>
+                <a href="login.html" class="nav-link">تسجيل الدخول</a>
+                <a href="signup.html" class="nav-link">إنشاء حساب</a>
+            </nav>
+            <div class="theme-toggle">
+                <button class="theme-btn" id="themeBtn">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="mountains">
+        <div class="hero-content">
+            <h1 class="hero-title">
+                <span class="glow-text">الجبال</span>
+            </h1>
+            <p class="hero-subtitle">استكشف 700+ جبل بتقنية 3D متقدمة</p>
+        </div>
+    </section>
+
+    <!-- Mountains Content -->
+    <section class="mountains-section">
+        <div class="mountains-container">
+            <h2 class="section-title">اكتشف الجبال</h2>
+            <p class="section-subtitle">اختر من قائمة الجبال الشهيرة حول العالم</p>
+
+            <div class="mountains-filter">
+                <input type="text" id="mountainSearch" class="search-box" placeholder="ابحث عن جبل...">
+                <select id="mountainFilter" class="filter-select">
+                    <option value="">جميع القارات</option>
+                    <option value="asia">آسيا</option>
+                    <option value="africa">أفريقيا</option>
+                    <option value="europe">أوروبا</option>
+                    <option value="americas">أمريكا</option>
+                    <option value="oceania">أوقيانوسيا</option>
+                </select>
+            </div>
+
+            <div class="mountains-grid" id="mountainsGrid">
+                <!-- Mountains will be loaded dynamically -->
+            </div>
+
+            <div class="load-more-container">
+                <button class="load-more-btn" id="loadMoreBtn">عرض المزيد</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mountain Modal -->
+    <div class="mountain-modal" id="mountainModal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <div class="modal-header">
+                <img id="modalImage" src="" alt="" class="modal-image">
+            </div>
+            <div class="modal-body">
+                <h2 id="modalTitle"></h2>
+                <div id="modalDetails"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>TREP DAWOUD</h3>
+                <p>نظام عرض متقدم لأجمل الجبال حول العالم</p>
+            </div>
+            <div class="footer-section">
+                <h3>الروابط السريعة</h3>
+                <ul>
+                    <li><a href="index.html">الرئيسية</a></li>
+                    <li><a href="mountains.html">الجبال</a></li>
+                    <li><a href="services.html">الخدمات</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>تابعنا</h3>
+                <div class="social-links">
+                    <a href="#" title="Facebook"><i class="fab fa-facebook"></i></a>
+                    <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" title="YouTube"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 TREP DAWOUD. جميع الحقوق محفوظة.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/breadcrumb.js"></script>
+    <script src="js/snow-effect.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/navigation.js"></script>
+    <script src="js/interactions.js"></script>
+    <script src="js/mountains-complete.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const snowContainer = document.createElement('div');
+            snowContainer.style.cssText = 'position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1;';
+            document.body.appendChild(snowContainer);
+            new SnowEffect(snowContainer, 80);
+        });
+    </script>
+</body>
+</html>
