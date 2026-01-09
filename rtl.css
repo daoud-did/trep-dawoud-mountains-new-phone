@@ -1,0 +1,54 @@
+html[dir="rtl"],
+html[lang="ar"] {
+    direction: rtl;
+    text-align: right;
+}
+
+html[dir="rtl"] .header-content {
+    flex-direction: row-reverse;
+}
+
+html[dir="rtl"] .nav-menu {
+    flex-direction: row-reverse;
+}
+
+html[dir="rtl"] .nav-link.active::after {
+    left: auto;
+    right: 0;
+}
+
+html[dir="rtl"] .footer-content {
+    direction: rtl;
+}
+
+html[dir="rtl"] .social-links {
+    flex-direction: row-reverse;
+}
+
+html[dir="rtl"] .theme-toggle {
+    order: -1;
+}
+
+/* Ensure text alignment for RTL */
+html[dir="rtl"] .hero-content,
+html[dir="rtl"] .services-container,
+html[dir="rtl"] .service-card {
+    text-align: right;
+}
+
+html[dir="rtl"] .service-card i {
+    margin-left: auto;
+    margin-right: 0;
+}
+
+/* Mobile RTL */
+@media (max-width: 768px) {
+    html[dir="rtl"] .nav-menu {
+        right: auto;
+        left: 0;
+    }
+
+    html[dir="rtl"] .nav-link.active::after {
+        display: none;
+    }
+}

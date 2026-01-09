@@ -1,0 +1,112 @@
+/* Performance Optimization CSS for Weak Devices */
+/* Reduces animations and improves rendering on low-end phones */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Disable complex animations on mobile */
+@media (max-width: 768px) {
+    .glow-text {
+        animation: none !important;
+        text-shadow: none !important;
+    }
+
+    .feature-card:hover .feature-icon {
+        transform: none !important;
+    }
+
+    button:active {
+        animation: none !important;
+    }
+
+    .nav-link {
+        animation: none !important;
+    }
+
+    .service-card {
+        animation: none !important;
+    }
+
+    .modal-content {
+        animation: none !important;
+    }
+
+    /* Reduce blur effects on mobile */
+    .header {
+        backdrop-filter: none !important;
+    }
+
+    /* Disable hover effects on touch devices */
+    .feature-card:hover {
+        transform: none !important;
+    }
+
+    .btn:hover {
+        transform: none !important;
+    }
+
+    /* Reduce shadows for better performance */
+    * {
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
+}
+
+/* Very aggressive optimization for very weak devices (< 1GB RAM) */
+@media (max-width: 480px) {
+    /* Disable all transitions */
+    * {
+        transition: none !important;
+    }
+
+    /* Simple box shadows only */
+    .feature-card {
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+    }
+
+    .header {
+        box-shadow: none !important;
+    }
+
+    /* Reduce gradients */
+    .btn-primary {
+        background: #e74c3c !important;
+    }
+
+    /* Simplify borders */
+    input,
+    textarea {
+        border: 1px solid #ccc !important;
+        box-shadow: none !important;
+    }
+}
+
+/* Font loading is handled via HTML link tags */
+
+/* Reduce repaints and reflows */
+.header-content {
+    will-change: auto;
+}
+
+/* Optimize scrolling */
+html {
+    scroll-behavior: auto !important;
+}
+
+body {
+    will-change: auto;
+}
+
+/* Remove unnecessary will-change */
+.nav-link,
+.feature-card,
+.service-card {
+    will-change: auto !important;
+}

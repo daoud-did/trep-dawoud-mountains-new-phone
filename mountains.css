@@ -1,0 +1,407 @@
+.mountains-section {
+    padding: 80px 20px;
+    background: #f8f9fa;
+}
+
+body.dark-mode .mountains-section {
+    background: #222;
+}
+
+.mountains-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.mountains-filter {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.search-box,
+.filter-select {
+    padding: 12px 20px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    background: white;
+    color: #2c3e50;
+    transition: all 0.3s ease;
+}
+
+body.dark-mode .search-box,
+body.dark-mode .filter-select {
+    background: #2a2a2a;
+    color: #ecf0f1;
+    border-color: #444;
+}
+
+.search-box:focus,
+.filter-select:focus {
+    outline: none;
+    border-color: #e74c3c;
+    box-shadow: 0 0 10px rgba(230, 76, 60, 0.2);
+}
+
+.search-box {
+    flex: 1;
+    min-width: 200px;
+}
+
+.filter-select {
+    min-width: 150px;
+    cursor: pointer;
+}
+
+.mountains-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.mountain-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: 2px solid transparent;
+}
+
+body.dark-mode .mountain-card {
+    background: #2a2a2a;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.mountain-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(230, 76, 60, 0.2);
+    border-color: #e74c3c;
+}
+
+.mountain-image {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.mountain-card:hover .mountain-image {
+    transform: scale(1.05);
+}
+
+.mountain-content {
+    padding: 1.5rem;
+}
+
+.mountain-name {
+    font-size: 1.4rem;
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+body.dark-mode .mountain-name {
+    color: #ecf0f1;
+}
+
+.mountain-location {
+    color: #7f8c8d;
+    font-size: 0.95rem;
+    margin-bottom: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+body.dark-mode .mountain-location {
+    color: #bdc3c7;
+}
+
+.mountain-height {
+    font-size: 1.2rem;
+    color: #e74c3c;
+    font-weight: 600;
+    margin-bottom: 0.8rem;
+}
+
+.mountain-difficulty {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.difficulty-easy {
+    background: #27ae60;
+    color: white;
+}
+
+.difficulty-medium {
+    background: #f39c12;
+    color: white;
+}
+
+.difficulty-hard {
+    background: #e74c3c;
+    color: white;
+}
+
+.mountain-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 2000;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+/* Snow effects on sides */
+.mountain-modal::before,
+.mountain-modal::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    width: 60px;
+    height: 100%;
+    z-index: 1999;
+    pointer-events: none;
+}
+
+.mountain-modal::before {
+    left: 0;
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0) 100%);
+    box-shadow: inset 0 0 30px rgba(255, 255, 255, 0.5);
+}
+
+.mountain-modal::after {
+    right: 0;
+    background: linear-gradient(270deg, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0) 100%);
+    box-shadow: inset 0 0 30px rgba(255, 255, 255, 0.5);
+}
+
+.mountain-modal.active {
+    display: flex;
+}
+
+.mountain-modal .modal-content {
+    background: white;
+    border-radius: 15px;
+    padding: 2rem;
+    max-width: 700px;
+    width: 100%;
+    position: relative;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3), 0 0 30px rgba(255, 255, 255, 0.2);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(5px);
+}
+
+.mountain-modal .modal-header {
+    position: relative;
+    margin-bottom: 1.5rem;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+body.dark-mode .mountain-modal .modal-content {
+    background: #2a2a2a;
+    color: #ecf0f1;
+}
+
+.mountain-modal-close {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: #7f8c8d;
+    cursor: pointer;
+}
+
+body.dark-mode .mountain-modal-close {
+    color: #bdc3c7;
+}
+
+.mountain-modal-close:hover {
+    color: #e74c3c;
+}
+
+.mountain-modal-image,
+#modalImage {
+    width: 100%;
+    height: auto;
+    max-height: 450px;
+    object-fit: contain;
+    border-radius: 12px;
+    margin-bottom: 1.5rem;
+    transition: transform 0.3s ease, filter 0.3s ease;
+    display: block;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(200, 200, 200, 0.05) 100%);
+    padding: 0;
+}
+
+.mountain-modal-image:hover,
+#modalImage:hover {
+    transform: scale(1.03);
+    filter: brightness(1.05) contrast(1.05);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.mountain-modal-title {
+    font-size: 1.8rem;
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+body.dark-mode .mountain-modal-title {
+    color: #ecf0f1;
+}
+
+.mountain-modal-location {
+    color: #7f8c8d;
+    font-size: 0.95rem;
+    margin-bottom: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+body.dark-mode .mountain-modal-location {
+    color: #bdc3c7;
+}
+
+.mountain-modal-height {
+    font-size: 1.2rem;
+    color: #e74c3c;
+    font-weight: 600;
+    margin-bottom: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.mountain-modal-description {
+    color: #555;
+    line-height: 1.8;
+    margin-bottom: 1rem;
+}
+
+body.dark-mode .mountain-modal-description {
+    color: #bdc3c7;
+}
+
+.mountain-modal-difficulty {
+    background: rgba(0, 0, 0, 0.05);
+    padding: 1rem;
+    border-radius: 8px;
+    color: #2c3e50;
+    margin-top: 1rem;
+}
+
+body.dark-mode .mountain-modal-difficulty {
+    background: rgba(255, 255, 255, 0.1);
+    color: #ecf0f1;
+}
+
+@media (max-width: 768px) {
+    .mountains-filter {
+        flex-direction: column;
+    }
+
+    .search-box,
+    .filter-select {
+        width: 100%;
+    }
+
+    .mountains-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Snow animation for modal */
+@keyframes snowfall {
+    0% {
+        opacity: 0;
+        transform: translateY(-100px) translateX(0);
+    }
+    10% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(500px) translateX(100px);
+    }
+}
+
+@keyframes snowfall-reverse {
+    0% {
+        opacity: 0;
+        transform: translateY(-100px) translateX(0);
+    }
+    10% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(500px) translateX(-100px);
+    }
+}
+
+/* Snow particles on sides */
+.mountain-modal .snowflake {
+    position: fixed;
+    top: -100px;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1.5em;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    z-index: 1999;
+    pointer-events: none;
+}
+
+.mountain-modal .snowflake:nth-child(odd) {
+    animation: snowfall 10s linear infinite;
+}
+
+.mountain-modal .snowflake:nth-child(even) {
+    animation: snowfall-reverse 12s linear infinite;
+}
+
+/* Enhanced modal borders with snow effect */
+.mountain-modal .modal-content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, 
+        transparent, 
+        rgba(255, 255, 255, 0.8), 
+        rgba(255, 255, 255, 0.6), 
+        rgba(255, 255, 255, 0.8), 
+        transparent);
+    border-radius: 15px 15px 0 0;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+}

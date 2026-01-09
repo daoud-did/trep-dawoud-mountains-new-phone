@@ -1,0 +1,525 @@
+/* 
+ * TREP DAWOUD - Mobile Performance Critical CSS
+ * حد أدنى من CSS الضروري للعرض الأولي
+ * استخدم هذا inline في <head> لتسريع FCP
+ * الحجم: ~8KB (مضغوط)
+ */
+
+:root {
+    --primary: #D4845C;
+    --primary-dark: #B8623D;
+    --secondary: #067e66;
+    --accent: #E8C547;
+    --off-white: #F8F7F2;
+    --black: #2F2D2A;
+    --gray: #7f8c8d;
+    --transition-duration: 0.3s;
+}
+
+/* ============================================
+   RESET & GLOBAL
+   ============================================ */
+
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    font-family: system-ui, -apple-system, 'Segoe UI', 'Cairo', sans-serif;
+    font-size: clamp(14px, 4vw, 16px);
+    line-height: 1.6;
+    color: var(--black);
+    background: var(--off-white);
+    min-height: 100vh;
+    /* تجنب البطء من الـ Transitions */
+    transition: background-color var(--transition-duration) ease;
+    overflow-x: hidden;
+}
+
+body.dark-mode {
+    background: #1a1a18;
+    color: #f8f7f2;
+}
+
+/* ============================================
+   HEADER & NAVIGATION
+   ============================================ */
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: rgba(248, 247, 242, 0.98);
+    backdrop-filter: blur(4px);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    will-change: transform; /* تحسين الأداء */
+}
+
+body.dark-mode .header {
+    background: rgba(26, 26, 24, 0.98);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.header-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0.75rem 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: clamp(1.2rem, 3vw, 1.5rem);
+    font-weight: 700;
+    color: var(--primary-dark);
+    text-decoration: none;
+}
+
+.nav-menu {
+    display: none; /* مخفي على الهاتف */
+    gap: 1rem;
+    list-style: none;
+    flex-wrap: wrap;
+}
+
+@media (min-width: 769px) {
+    .nav-menu {
+        display: flex;
+    }
+}
+
+.nav-link {
+    color: var(--black);
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: color var(--transition-duration) ease;
+    padding: 0.5rem 0;
+    text-decoration: none;
+}
+
+body.dark-mode .nav-link {
+    color: #ccc;
+}
+
+.nav-link:active,
+.nav-link:focus {
+    color: var(--primary);
+}
+
+.theme-btn {
+    background: transparent;
+    border: 2px solid var(--primary);
+    color: var(--primary);
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    transition: all var(--transition-duration) ease;
+}
+
+.theme-btn:active {
+    transform: scale(0.95);
+    background: var(--primary);
+    color: white;
+}
+
+.menu-toggle {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    width: 32px;
+    height: 32px;
+    align-items: center;
+    justify-content: center;
+}
+
+@media (min-width: 769px) {
+    .menu-toggle {
+        display: none;
+    }
+}
+
+.menu-toggle span {
+    width: 24px;
+    height: 2px;
+    background: var(--black);
+    border-radius: 1px;
+    transition: all var(--transition-duration) ease;
+}
+
+body.dark-mode .menu-toggle span {
+    background: #fff;
+}
+
+/* ============================================
+   HERO SECTION
+   ============================================ */
+
+.hero {
+    padding: clamp(50px, 15vh, 100px) 16px clamp(30px, 10vh, 50px);
+    margin-top: 60px;
+    text-align: center;
+    background: linear-gradient(135deg, rgba(212, 132, 92, 0.08), rgba(6, 126, 102, 0.04));
+}
+
+body.dark-mode .hero {
+    background: linear-gradient(135deg, rgba(212, 132, 92, 0.08), rgba(6, 126, 102, 0.04));
+}
+
+.hero-title {
+    font-size: clamp(1.8rem, 6vw, 3rem);
+    font-weight: 700;
+    margin: 1rem 0;
+    color: var(--black);
+}
+
+body.dark-mode .hero-title {
+    color: var(--off-white);
+}
+
+.hero-subtitle {
+    font-size: clamp(1rem, 3vw, 1.25rem);
+    color: var(--gray);
+    margin-bottom: 1.5rem;
+}
+
+body.dark-mode .hero-subtitle {
+    color: #bbb;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* ============================================
+   BUTTONS
+   ============================================ */
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: clamp(10px, 2vw, 14px) clamp(20px, 4vw, 30px);
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: clamp(0.9rem, 2vw, 1rem);
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    transition: all var(--transition-duration) ease;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    gap: 0.5rem;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    color: white;
+    box-shadow: 0 2px 8px rgba(212, 132, 92, 0.2);
+}
+
+.btn-primary:active {
+    transform: translateY(1px);
+    box-shadow: 0 1px 4px rgba(212, 132, 92, 0.15);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: var(--primary);
+    border: 2px solid var(--primary);
+}
+
+.btn-secondary:active {
+    background: rgba(212, 132, 92, 0.1);
+}
+
+/* ============================================
+   GRID LAYOUTS
+   ============================================ */
+
+.features-grid,
+.blog-grid,
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(clamp(150px, 35vw, 300px), 1fr));
+    gap: clamp(1rem, 3vw, 2rem);
+}
+
+/* ============================================
+   CARDS
+   ============================================ */
+
+.card,
+.feature-card,
+.blog-card,
+.service-card {
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    transition: transform var(--transition-duration) ease, box-shadow var(--transition-duration) ease;
+    will-change: auto; /* تجنب البطء من will-change المستمر */
+}
+
+body.dark-mode .card,
+body.dark-mode .feature-card,
+body.dark-mode .blog-card,
+body.dark-mode .service-card {
+    background: #2a2a2a;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.card:active,
+.feature-card:active,
+.blog-card:active,
+.service-card:active {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+/* ============================================
+   IMAGES
+   ============================================ */
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Lazy loading - إخفاء الصور غير المحملة */
+img[loading="lazy"],
+img[data-src] {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+/* ============================================
+   TYPOGRAPHY
+   ============================================ */
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--black);
+    word-break: break-word;
+    overflow-wrap: break-word;
+}
+
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode h3,
+body.dark-mode h4,
+body.dark-mode h5,
+body.dark-mode h6 {
+    color: var(--off-white);
+}
+
+p {
+    margin-bottom: 1rem;
+    color: var(--gray);
+    line-height: 1.7;
+}
+
+body.dark-mode p {
+    color: #bbb;
+}
+
+a {
+    color: var(--primary);
+    text-decoration: none;
+    transition: color var(--transition-duration) ease;
+}
+
+a:focus {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+}
+
+/* ============================================
+   FORMS
+   ============================================ */
+
+input,
+textarea,
+select {
+    font-family: inherit;
+    font-size: inherit;
+    padding: 12px;
+    border: 1px solid var(--gray);
+    border-radius: 6px;
+    background: white;
+    color: var(--black);
+    width: 100%;
+    max-width: 100%;
+    transition: border-color var(--transition-duration) ease;
+}
+
+body.dark-mode input,
+body.dark-mode textarea,
+body.dark-mode select {
+    background: #333;
+    color: white;
+    border-color: #555;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 2px rgba(212, 132, 92, 0.1);
+}
+
+/* ============================================
+   UTILITY CLASSES
+   ============================================ */
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 16px;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.hidden {
+    display: none;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+/* ============================================
+   OPTIMIZATION CLASSES
+   ============================================ */
+
+/* تطبيق على الأجهزة الضعيفة */
+.low-end-device {
+    --transition-duration: 0.1s;
+}
+
+.low-end-device .card,
+.low-end-device .feature-card {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) !important;
+}
+
+.low-end-device .card:active,
+.low-end-device .feature-card:active {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* تطبيق على الاتصالات البطيئة */
+.slow-connection img {
+    opacity: 0.95;
+}
+
+/* عندما يكون بدون اتصال */
+.offline {
+    opacity: 0.8;
+}
+
+.offline .btn,
+.offline a {
+    pointer-events: none;
+    opacity: 0.6;
+}
+
+/* ============================================
+   MEDIA QUERIES
+   ============================================ */
+
+@media (max-width: 480px) {
+    .header-content {
+        padding: 0.5rem 12px;
+    }
+    
+    .logo {
+        font-size: 1.2rem;
+    }
+    
+    .btn {
+        width: 100%;
+    }
+    
+    .hero-buttons {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 768px) {
+    .features-grid,
+    .blog-grid,
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ============================================
+   PRINT STYLES
+   ============================================ */
+
+@media print {
+    body {
+        background: white;
+        color: black;
+    }
+    
+    .header,
+    .footer,
+    .btn {
+        display: none;
+    }
+}
+
+/* ============================================
+   PREFERS REDUCED MOTION
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}

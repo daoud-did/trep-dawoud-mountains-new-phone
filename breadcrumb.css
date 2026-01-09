@@ -1,0 +1,104 @@
+/* TREP DAWOUD - Breadcrumb Navigation Style */
+/* Navigation path indicator for all pages */
+
+/* Breadcrumb Container */
+.breadcrumb {
+    background: rgba(0, 0, 0, 0.95);
+    border-bottom: 1px solid rgba(0, 234, 255, 0.2);
+    padding: 1rem 2rem;
+    margin-top: 70px;
+    position: relative;
+    z-index: 999;
+}
+
+.breadcrumb-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+/* Breadcrumb Items */
+.breadcrumb-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.breadcrumb-link,
+.breadcrumb-text {
+    color: #D4845C;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+.breadcrumb-link:hover {
+    color: #E8A876;
+    text-shadow: 0 0 10px rgba(212, 132, 92, 0.6);
+}
+
+.breadcrumb-link.active {
+    color: #D4845C;
+    font-weight: 600;
+}
+
+/* Breadcrumb Separator */
+.breadcrumb-separator {
+    color: #D4845C;
+    margin: 0 0.3rem;
+    font-weight: bold;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .breadcrumb {
+        padding: 0.8rem 1rem;
+        margin-top: 65px;
+    }
+
+    .breadcrumb-content {
+        gap: 0.3rem;
+    }
+
+    .breadcrumb-link,
+    .breadcrumb-text,
+    .breadcrumb-separator {
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .breadcrumb {
+        padding: 0.6rem 0.8rem;
+    }
+
+    .breadcrumb-link,
+    .breadcrumb-text,
+    .breadcrumb-separator {
+        font-size: 0.75rem;
+    }
+
+    .breadcrumb-content {
+        gap: 0.2rem;
+    }
+}
+
+/* Dark Mode Support */
+body.dark-mode .breadcrumb {
+    background: rgba(0, 0, 0, 0.95);
+    border-bottom-color: rgba(0, 234, 255, 0.2);
+}
+
+body.dark-mode .breadcrumb-link,
+body.dark-mode .breadcrumb-text,
+body.dark-mode .breadcrumb-separator {
+    color: #D4845C;
+}
+
+body.dark-mode .breadcrumb-link:hover {
+    color: #E8A876;
+}

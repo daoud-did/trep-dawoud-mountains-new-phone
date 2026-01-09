@@ -1,0 +1,358 @@
+/* Mobile-First CSS Optimization */
+/* Reduces file size and improves mobile performance */
+
+/* Reduce complexity in media queries */
+@media (max-width: 1024px) {
+    /* Tablet optimizations */
+    .hero-title {
+        font-size: 2.5rem;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .features-grid,
+    .services-grid,
+    .blog-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+
+    .header-content {
+        padding: 0.75rem 15px;
+    }
+
+    .hero {
+        padding: 60px 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    /* Mobile optimizations */
+    
+    /* Reduce padding and margins */
+    body {
+        font-size: 16px; /* Prevents zoom on input focus */
+    }
+
+    .hero {
+        padding: 40px 15px 30px;
+        margin-top: 60px;
+    }
+
+    .hero-title {
+        font-size: 2rem;
+        line-height: 1.2;
+        margin-bottom: 0.75rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+
+    .section-title {
+        font-size: 1.5rem;
+        margin-bottom: 0.75rem;
+    }
+
+    .section-subtitle {
+        font-size: 0.95rem;
+        margin-bottom: 1.5rem;
+    }
+
+    /* Single column grids */
+    .features-grid,
+    .services-grid,
+    .blog-grid,
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    /* Reduce card padding */
+    .feature-card,
+    .service-card,
+    .blog-card {
+        padding: 1.25rem;
+    }
+
+    .blog-content {
+        padding: 1rem;
+    }
+
+    /* Smaller buttons */
+    .btn {
+        padding: 10px 20px;
+        font-size: 0.95rem;
+    }
+
+    /* Header optimization */
+    .header-content {
+        padding: 0.5rem 12px;
+    }
+
+    .logo {
+        font-size: 1.25rem;
+    }
+
+    .logo i {
+        font-size: 1.5rem;
+    }
+
+    .theme-btn {
+        width: 35px;
+        height: 35px;
+        font-size: 1rem;
+    }
+
+    /* Hide nav menu on mobile */
+    .nav-menu {
+        display: none;
+    }
+
+    /* Reduce footer */
+    .footer {
+        padding: 2rem 15px 0.75rem;
+        margin-top: 3rem;
+    }
+
+    .footer-section {
+        margin-bottom: 1rem;
+    }
+
+    .footer-section h3 {
+        font-size: 1rem;
+        margin-bottom: 0.75rem;
+    }
+
+    .footer-section a {
+        font-size: 0.9rem;
+    }
+
+    /* Optimize images */
+    .blog-image {
+        height: 180px;
+    }
+
+    /* Remove complex shadows */
+    .feature-card,
+    .service-card,
+    .blog-card {
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    }
+
+    .feature-card:hover,
+    .service-card:hover,
+    .blog-card:hover {
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+    }
+}
+
+@media (max-width: 480px) {
+    /* Small phone optimizations */
+    
+    .hero-title {
+        font-size: 1.5rem;
+        line-height: 1.2;
+    }
+
+    .section-title {
+        font-size: 1.25rem;
+    }
+
+    .section-subtitle {
+        font-size: 0.9rem;
+    }
+
+    /* Reduce spacing */
+    .hero {
+        padding: 30px 12px 20px;
+        margin-top: 50px;
+    }
+
+    /* Smaller hero buttons */
+    .hero-buttons {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+
+    .btn {
+        padding: 8px 16px;
+        font-size: 0.9rem;
+        width: 100%;
+    }
+
+    /* Smaller cards */
+    .feature-card,
+    .service-card,
+    .blog-card {
+        padding: 1rem;
+    }
+
+    .blog-content {
+        padding: 0.75rem;
+    }
+
+    .feature-icon {
+        font-size: 2.5rem;
+    }
+
+    .blog-title {
+        font-size: 1.1rem;
+    }
+
+    .blog-excerpt {
+        font-size: 0.9rem;
+    }
+
+    /* Header adjustments */
+    .logo {
+        font-size: 1rem;
+    }
+
+    .logo i {
+        font-size: 1.25rem;
+    }
+
+    .theme-btn {
+        width: 32px;
+        height: 32px;
+        font-size: 0.9rem;
+    }
+
+    /* Footer on small screens */
+    .footer {
+        padding: 1.5rem 10px 0.5rem;
+        font-size: 0.85rem;
+    }
+
+    .footer-section h3 {
+        font-size: 0.95rem;
+    }
+
+    .social-links {
+        font-size: 1.2rem;
+    }
+
+    /* Optimize blog cards */
+    .blog-image {
+        height: 150px;
+    }
+
+    .blog-meta {
+        font-size: 0.75rem;
+    }
+
+    /* No transforms on mobile to reduce repaints */
+    .feature-card:hover,
+    .service-card:hover,
+    .blog-card:hover {
+        transform: none;
+    }
+
+    /* Simplify button hover */
+    .btn:hover {
+        background: linear-gradient(135deg, var(--primary), var(--primary));
+    }
+}
+
+/* Optimize for devices with reduced memory */
+@media (max-device-width: 600px) and (max-height: 800px) {
+    /* Extra aggressive optimization for weak phones */
+    
+    .hero::before {
+        display: none;
+    }
+
+    .feature-icon {
+        font-size: 2rem;
+    }
+
+    .blog-image {
+        height: 140px;
+    }
+
+    /* Reduce animation complexity */
+    * {
+        animation-duration: 0.1s !important;
+    }
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+    /* Increase tap target size */
+    button,
+    a,
+    .blog-card,
+    .service-card {
+        min-height: 44px;
+        min-width: 44px;
+    }
+
+    /* Remove hover effects */
+    .feature-card:hover .feature-icon,
+    .blog-card:hover .blog-image {
+        transform: none;
+    }
+
+    /* Simplify click feedback */
+    .btn:active {
+        opacity: 0.8;
+    }
+}
+
+/* Network-aware loading */
+@media (prefers-reduced-data: reduce) {
+    /* Disable background images and animations */
+    .hero::before,
+    .hero::after {
+        display: none;
+    }
+
+    * {
+        animation: none !important;
+        transition: none !important;
+    }
+
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+}
+
+/* Dark mode optimizations for OLED screens */
+@media (prefers-color-scheme: dark) {
+    body.dark-mode {
+        background-color: #000; /* OLED friendly */
+    }
+
+    body.dark-mode .feature-card,
+    body.dark-mode .service-card,
+    body.dark-mode .blog-card {
+        background: #111; /* Darker for OLED */
+    }
+}
+
+/* Print styles */
+@media print {
+    .header,
+    .footer,
+    .nav-menu,
+    .theme-toggle,
+    .load-more-container {
+        display: none;
+    }
+
+    body {
+        background: white;
+    }
+
+    .feature-card,
+    .service-card,
+    .blog-card {
+        box-shadow: none;
+        border: 1px solid #ccc;
+        page-break-inside: avoid;
+    }
+}

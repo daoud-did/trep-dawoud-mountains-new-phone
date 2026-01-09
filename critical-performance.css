@@ -1,0 +1,179 @@
+/* Critical Performance Enhancements */
+/* Aggressive optimization for weak devices and slow networks */
+
+/* 1. Reduce CSS file sizes by removing unused selectors */
+/* Remove expensive pseudo-elements on mobile */
+@media (max-width: 768px) {
+    .hero::before,
+    .hero::after,
+    .section::before,
+    .section::after {
+        display: none !important;
+    }
+}
+
+/* 2. System fonts fallback for better performance */
+body {
+    font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Cairo', sans-serif;
+}
+
+/* 4. Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+
+    html {
+        scroll-behavior: auto !important;
+    }
+}
+
+/* 5. Optimize images for different network conditions */
+@media (prefers-reduced-data: reduce) {
+    img {
+        background-color: #f0f0f0;
+    }
+
+    .hero,
+    .feature-card,
+    .service-card,
+    .blog-card {
+        background-image: none !important;
+    }
+
+    * {
+        animation: none !important;
+    }
+}
+
+/* 6. Optimize for slow 2G/3G networks */
+@media (max-width: 600px) {
+    /* Disable all transitions on weak devices */
+    * {
+        transition: none !important;
+        animation: none !important;
+    }
+
+    /* Simplify shadows */
+    * {
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
+
+    /* Simplify gradients */
+    .btn,
+    .btn-primary,
+    button,
+    a[class*="btn"] {
+        background: #e74c3c !important;
+        background-image: none !important;
+    }
+}
+
+/* 7. Optimize rendering performance */
+/* Use GPU acceleration only when necessary */
+.blog-card,
+.service-card,
+.feature-card {
+    will-change: auto; /* Remove for better memory usage */
+    contain: layout style paint;
+}
+
+/* 8. Reduce paint areas */
+.header {
+    will-change: transform;
+}
+
+/* 9. Optimize scrolling */
+html {
+    scroll-behavior: auto; /* Disable smooth scroll on mobile */
+}
+
+@media (prefers-reduced-motion: no-preference) and (min-width: 1024px) {
+    html {
+        scroll-behavior: smooth;
+    }
+}
+
+/* 10. Efficient selectors - avoid attribute selectors where possible */
+/* Instead of [class*="btn"], use simpler selectors */
+
+/* 11. Reduce specificity for faster parsing */
+/* Group similar rules */
+.feature-card,
+.service-card,
+.blog-card {
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+/* 12. Optimize layout thrashing */
+.feature-card:hover,
+.service-card:hover,
+.blog-card:hover {
+    /* Use opacity instead of transform for smoother animations */
+    opacity: 0.95;
+}
+
+/* 13. Critical CSS inlining recommendations */
+/* These should be inlined in <head> for faster rendering:
+   - .header styles
+   - .hero styles
+   - .hero-buttons styles
+   - .nav-link styles
+   - Body background color
+*/
+
+/* 14. Defer non-critical styles */
+/* blog.css, mountains.css, services.css can be loaded asynchronously */
+
+/* 15. Network optimizations */
+/* Preconnect to external resources */
+@supports (preconnect: true) {
+    /* Already handled in HTML with link rel="preconnect" */
+}
+
+/* 16. Content visibility for better performance */
+.feature-card,
+.service-card,
+.blog-card {
+    content-visibility: auto;
+}
+
+/* 17. Size container queries for responsive components */
+@container (max-width: 300px) {
+    .feature-card {
+        padding: 0.75rem;
+    }
+}
+
+/* 18. Optimize for connection speed */
+@media (connection: 4g) {
+    /* Load full quality assets */
+}
+
+@media (connection: 3g) {
+    /* Optimize for slower speeds */
+    img {
+        max-width: 100%;
+    }
+}
+
+@media (connection: slow-2g) or (connection: 2g) {
+    /* Maximum optimization */
+    * {
+        animation: none !important;
+    }
+}
+
+/* 19. CPU throttling optimization */
+@media (update: slow) {
+    /* Reduce animation frame rate */
+    * {
+        animation-duration: 0.5s !important;
+    }
+}

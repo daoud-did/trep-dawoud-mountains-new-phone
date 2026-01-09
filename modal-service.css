@@ -1,0 +1,152 @@
+.service-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 2000;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.service-modal.active {
+    display: flex;
+}
+
+.modal-content {
+    background: white;
+    border-radius: 15px;
+    padding: 2rem;
+    max-width: 600px;
+    width: 100%;
+    max-height: 80vh;
+    overflow-y: auto;
+    position: relative;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode .modal-content {
+    background: #2a2a2a;
+    color: #ecf0f1;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    margin-bottom: 1.5rem;
+}
+
+.modal-icon {
+    font-size: 3rem;
+    color: #e74c3c;
+}
+
+.modal-close {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: #7f8c8d;
+    cursor: pointer;
+    padding: 0;
+    width: auto;
+    height: auto;
+}
+
+body.dark-mode .modal-close {
+    color: #bdc3c7;
+}
+
+.modal-close:hover {
+    color: #e74c3c;
+    transform: none;
+}
+
+.modal-title {
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+}
+
+body.dark-mode .modal-title {
+    color: #ecf0f1;
+}
+
+.modal-description {
+    color: #7f8c8d;
+    margin-bottom: 1.5rem;
+    line-height: 1.8;
+}
+
+body.dark-mode .modal-description {
+    color: #bdc3c7;
+}
+
+.modal-features {
+    background: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: 10px;
+    margin-bottom: 1.5rem;
+}
+
+body.dark-mode .modal-features {
+    background: #1a1a1a;
+}
+
+.modal-features h4 {
+    color: #2c3e50;
+    margin-bottom: 1rem;
+}
+
+body.dark-mode .modal-features h4 {
+    color: #ecf0f1;
+}
+
+.feature-list {
+    list-style: none;
+}
+
+.feature-list li {
+    padding: 0.5rem 0;
+    padding-right: 1.5rem;
+    position: relative;
+    color: #7f8c8d;
+}
+
+body.dark-mode .feature-list li {
+    color: #bdc3c7;
+}
+
+.feature-list li::before {
+    content: '✓';
+    position: absolute;
+    right: 0;
+    color: #27ae60;
+    font-weight: bold;
+}
+
+.modal-button {
+    background: linear-gradient(135deg, #e74c3c, #c0392b);
+    color: white;
+    padding: 12px 30px;
+    border-radius: 5px;
+    font-weight: 600;
+    width: 100%;
+    margin-top: 1rem;
+}
+
+.modal-button:hover {
+    box-shadow: 0 8px 20px rgba(230, 76, 60, 0.4);
+}
+
+@media (max-width: 768px) {
+    .modal-content {
+        padding: 1.5rem;
+    }
+
+    .modal-icon {
+        font-size: 2rem;
+    }
+}
